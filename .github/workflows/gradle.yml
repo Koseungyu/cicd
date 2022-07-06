@@ -24,6 +24,27 @@ jobs:
         with:
           java-version: 1.8
 
+      - name: gradle Caching
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Create ./src/main/resources/
+        run: |
+          mkdir -p ./src/main/resources/
+
+      - name: make application.properties
+        run: |
+          cd ./src/main/resources
+          touch ./application.properties
+          echo "${{ secrets.PROPERTIES }}" > ./application.properties
+        shell: bash
+
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
         shell: bash
@@ -31,7 +52,6 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
         shell: bash
-
 
       - name: Make zip file #1
         run: zip -qq -r ./$GITHUB_SHA.zip .
@@ -52,6 +72,3 @@ jobs:
           --deployment-config-name CodeDeployDefault.OneAtATime
           --deployment-group-name dev
           --s3-location bucket=dogflow-deploy,bundleType=zip,key=$GITHUB_SHA.zip
-
-      
-    
