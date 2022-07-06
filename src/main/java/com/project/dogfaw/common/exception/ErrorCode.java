@@ -98,9 +98,7 @@ public enum ErrorCode {
 
     //sse
     NOT_EXIST_NOTIFICATION(HttpStatus.NOT_FOUND,"404","존재하지 않는 알림입니다.");
-
-
-
+    
     private final HttpStatus status;
     private final String errorCode;
     private final String errorMessage;
