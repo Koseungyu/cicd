@@ -26,6 +26,7 @@ public class Stack {
 
     private Long userId;
 
+
     public Stack(StackDto stackdto) {
         this.stack = stackdto.getStack();
     }
