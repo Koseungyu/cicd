@@ -19,5 +19,4 @@ public class ExceptionResponse {
         this.errorCode = errorCode.getErrorCode();
         this.errorMessage = errorCode.getErrorMessage();
     }
-    
 }
