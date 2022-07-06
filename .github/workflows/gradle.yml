@@ -51,7 +51,7 @@ jobs:
         run: aws deploy create-deployment --application-name dog-flow
           --deployment-config-name CodeDeployDefault.OneAtATime
           --deployment-group-name dev
-          --s3-location bucket=dogflow,bundleType=zip,key=$GITHUB_SHA.zip
+          --s3-location bucket=dogflow-deploy,bundleType=zip,key=$GITHUB_SHA.zip
 
       
     
