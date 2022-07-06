@@ -5,12 +5,6 @@ files:
   - source: /
     destination: /opt/dog-flow
 
-permissions:
-  - object: /opt/dog-flow/
-    owner: ubuntu
-    group: ubuntu
-    mode: 755
-
 hooks:
   AfterInstall:
     # location은 프로젝트의 root경로를 기준
