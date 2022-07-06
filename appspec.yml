@@ -3,7 +3,13 @@ os: linux
 
 files:
   - source: /
-    destination: /opt/dog-flow
+    destination: /home/ubuntu/dog-flow
+
+permissions: #권한 허용
+  - object: /home/ubuntu/app/
+    owner: ubuntu
+    group: ubuntu
+    mode: 755
 
 hooks:
   AfterInstall:
